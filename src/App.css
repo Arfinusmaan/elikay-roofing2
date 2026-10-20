@@ -1,0 +1,111 @@
+/* App Shell & Mobile Floating Emergency CTA */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#main-content {
+  flex-grow: 1;
+}
+
+/* Strictly Mobile-Only Floating Bottom Bar */
+.mobile-floating-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-floating-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.75rem 1rem;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7);
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+
+  .mobile-floating-bar.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-floating-bar.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .floating-call-btn {
+    flex: 1;
+    padding: 0.75rem 0.85rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .floating-call-btn svg {
+    color: #60a5fa;
+  }
+
+  .floating-call-btn:active {
+    transform: scale(0.96);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .floating-quote-btn {
+    flex: 1;
+    padding: 0.75rem 0.85rem;
+    border-radius: 9999px;
+    background-color: var(--brand-blue, #035BFE);
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 16px rgba(3, 91, 254, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .floating-quote-btn:hover {
+    background-color: var(--brand-blue-hover, #0047cc);
+  }
+
+  .floating-quote-btn:active {
+    transform: scale(0.96);
+    background-color: var(--brand-blue-deep, #102C77);
+  }
+
+  /* Clear bottom margin so footer is not obscured */
+  .site-footer {
+    padding-bottom: 5.5rem !important;
+  }
+}
